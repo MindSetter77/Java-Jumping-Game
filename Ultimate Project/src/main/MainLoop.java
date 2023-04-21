@@ -15,8 +15,9 @@ public class MainLoop implements Runnable{
     public void run() {
         while(true){
             try{
+                player.move();
+                System.out.println(player.walking);
                 gameScreen.repaint();
-                System.out.println(player.left+" "+player.right+" "+player.up+" "+player.down);
                 Thread.sleep(1000/144);
             } catch(InterruptedException ex){
                 ex.printStackTrace();

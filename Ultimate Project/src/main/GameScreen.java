@@ -15,15 +15,7 @@ public class GameScreen extends JPanel {
 
     public GameScreen(){
         this.platformManager = new PlatformManager();
-        this.player = new Player();
-
-
-
-
-
-
-
-
+        this.player = new Player(platformManager);
 
 
         // Main loop

@@ -10,7 +10,7 @@ import main.Window;
 
 public class PlatformManager {
     File file;
-    ArrayList<Platform> platformList;
+    public ArrayList<Platform> platformList;
 
     public PlatformManager(){
         this.platformList = new ArrayList<>();

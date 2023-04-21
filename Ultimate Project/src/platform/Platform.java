@@ -21,5 +21,14 @@ public class Platform {
     public void getXY(){
         System.out.println(x+" "+y);
     }
+
+    public boolean checkIfInside(int x, int y){
+        if(x>this.x && x<this.x+Window.sprite_size){
+            if(y>this.y && y<this.y+Window.sprite_size){
+                return true;
+            }
+        }
+        return false;
+    }
     
 }
