@@ -41,6 +41,10 @@ public class GameScreen extends JPanel {
         
         int change = 0;
 
+        g2d.setColor(Color.red);
+
+        g2d.drawLine(0, 736, Window.width, 736);
+
         g2d.setColor(Color.black);
 
         for(int i=0; i<Window.width/Window.sprite_size; i++){

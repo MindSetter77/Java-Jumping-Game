@@ -15,8 +15,10 @@ public class MainLoop implements Runnable{
     public void run() {
         while(true){
             try{
+                player.checkIfInAir();
                 player.move();
-                System.out.println(player.walking);
+                //System.out.println(player.inAir+"   Flags: "+player.up+" "+player.jumping+" "+player.jumpingFlag);
+                //System.out.println(Thread.activeCount());
                 gameScreen.repaint();
                 Thread.sleep(1000/144);
             } catch(InterruptedException ex){

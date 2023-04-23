@@ -50,8 +50,6 @@ public class Window extends JFrame implements KeyListener{
             case 'w':
                 player.up = true;
                 break;
-            case 's':
-                player.down = true;
         }
     }
 
@@ -67,9 +65,6 @@ public class Window extends JFrame implements KeyListener{
                 break;
             case 'w':
                 player.up = false;
-                break;
-            case 's':
-                player.down = false;
                 break;
         }
     }
