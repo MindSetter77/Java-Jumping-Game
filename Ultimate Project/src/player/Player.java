@@ -2,6 +2,7 @@ package player;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import main.Window;
 import platform.Platform;
@@ -9,7 +10,7 @@ import platform.PlatformManager;
 
 public class Player {
     int x;
-    int y;
+    public int y;
 
     public double yspeed;
     public double xspeed;
@@ -28,8 +29,11 @@ public class Player {
     public boolean jumpingFlag;
     public boolean inAir;
 
+    public Head head;
+    public boolean headHit;
+
     PlatformManager platformManager;
-    public Player(PlatformManager platformManager){
+    public Player(PlatformManager platformManager, ArrayList<Platform> lista){
         this.platformManager = platformManager;
 
         this.x = 64;
@@ -51,9 +55,14 @@ public class Player {
 
         this.playerPointA = new PlayerPoint(x, y+Window.sprite_size*2);
         this.playerPointB = new PlayerPoint(x+Window.sprite_size, y+Window.sprite_size*2);
+        
+        this.head = new Head(this, lista);
+        this.headHit = false;
     }
 
     public void move(){
+        updatePlayerPoints();
+        checkIfWalking();
 
         //left right movement
     
@@ -81,6 +90,7 @@ public class Player {
         else{
             if(walkingFlag){
                 yspeed = 0;
+                
                 walkingFlag = false;
             }
         }
@@ -100,15 +110,12 @@ public class Player {
         x+=xspeed;
         y+=yspeed;
 
-        
-
-        updatePlayerPoints();
-        checkIfWalking();
+        head.updateHead(this.x, this.y);
     }
 
     public void updatePlayerPoints(){
         playerPointA.updatePlayerPoint(x-1, y+Window.sprite_size*2);
-        playerPointB.updatePlayerPoint(x+Window.sprite_size+1, y+Window.sprite_size*2);
+        playerPointB.updatePlayerPoint(x+Window.sprite_size+1, (y+Window.sprite_size*2));
     }
 
     public void drawPlayer(Graphics2D g2d){
@@ -132,6 +139,7 @@ public class Player {
         if(!flag){
             walking = false;
         }
+        
     }
 
     public boolean ifOnBlock(){
@@ -155,5 +163,15 @@ public class Player {
         else{
             inAir = true;
         }
+    }
+
+    public void drawPlayerPoints(Graphics2D g2d){
+        playerPointA.drawPlayerPoint(g2d);
+        playerPointB.drawPlayerPoint(g2d);
+    }
+
+    public void updateHeadHit(){
+        this.headHit = head.checkIfHeadHit();
+        System.out.println(this.headHit);
     }
 }

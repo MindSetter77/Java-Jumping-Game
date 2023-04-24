@@ -7,7 +7,7 @@ import main.Window;
 
 public class Platform {
     int x;
-    int y;
+    public int y;
     public Platform(int x, int y){
         this.x = x;
         this.y = y;
@@ -15,7 +15,7 @@ public class Platform {
 
     public void paintPlatform(Graphics2D g2d){
         g2d.setColor(Color.red);
-        g2d.drawRect(x, y, Window.sprite_size, Window.sprite_size);
+        g2d.fillRect(x, y, Window.sprite_size, Window.sprite_size);
     }
 
     public void getXY(){

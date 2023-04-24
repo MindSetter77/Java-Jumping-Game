@@ -16,9 +16,8 @@ public class MainLoop implements Runnable{
         while(true){
             try{
                 player.checkIfInAir();
+                player.updateHeadHit();
                 player.move();
-                //System.out.println(player.inAir+"   Flags: "+player.up+" "+player.jumping+" "+player.jumpingFlag);
-                //System.out.println(Thread.activeCount());
                 gameScreen.repaint();
                 Thread.sleep(1000/144);
             } catch(InterruptedException ex){

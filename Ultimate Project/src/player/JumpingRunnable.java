@@ -16,20 +16,28 @@ public class JumpingRunnable implements Runnable{
     public void run() {
         while (true){
             try{
-                if(frame==0){
-                    player.yspeed -= 7;
-                } else if(frame >0 && frame <49) {
-                    player.yspeed *= 0.98;
-                    if(player.yspeed>1) player.yspeed=0;
-                }else if(frame == 50){
+                if(!player.headHit){
+
+                
+                    if(frame==0){
+                        player.yspeed -= 7;
+                    } else if(frame >0 && frame <49) {
+                        player.yspeed *= 0.98;
+                        if(player.yspeed>1) player.yspeed=0;
+                    }else if(frame == 50){
+                        player.yspeed = 0;
+                        player.jumping = false;
+                        player.jumpingFlag = false;
+                        return;
+                    }
+                
+                }
+                else{
                     player.yspeed = 0;
                     player.jumping = false;
                     player.jumpingFlag = false;
-                    System.out.println("exit");
                     return;
                 }
-                
-
                 
                 frame++;
                 Thread.sleep(1000/144);

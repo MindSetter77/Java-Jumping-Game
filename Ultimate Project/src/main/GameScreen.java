@@ -15,7 +15,7 @@ public class GameScreen extends JPanel {
 
     public GameScreen(){
         this.platformManager = new PlatformManager();
-        this.player = new Player(platformManager);
+        this.player = new Player(platformManager, platformManager.platformList);
 
 
         // Main loop
@@ -30,6 +30,8 @@ public class GameScreen extends JPanel {
         drawAllSprite(g2d);
         platformManager.drawAllPlatforms(g2d);
         player.drawPlayer(g2d);
+        player.drawPlayerPoints(g2d);
+        player.head.drawHead(g2d);
     }
 
     public void drawBackground(Graphics2D g2d){
