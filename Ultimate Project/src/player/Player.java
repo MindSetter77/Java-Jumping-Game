@@ -172,6 +172,5 @@ public class Player {
 
     public void updateHeadHit(){
         this.headHit = head.checkIfHeadHit();
-        System.out.println(this.headHit);
     }
 }
